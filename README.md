@@ -8,4 +8,4 @@ pasos proyecto
 0- lectura y comprensión del proyecto
 1- creacion repo
 2- creacion cuenta y bbdd aws
-3-
+3- creación de la bbdd
