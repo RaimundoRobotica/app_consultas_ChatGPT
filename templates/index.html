@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Langchain & OpenAI App</title>
+</head>
+<body>
+    <h1>Langchain & OpenAI App</h1>
+
+    <!-- Nuevo formulario para cargar el documento y hacer la pregunta -->
+    <form id="queryForm" method="post" enctype="multipart/form-data">
+        <label for="document">Cargar Documento:</label>
+        <input type="file" id="document" name="document" accept=".txt, .pdf">
+        <br>
+        <label for="question">Pregunta:</label>
+        <input type="text" id="question" name="question">
+        <br>
+        <button type="button" onclick="submitQuery()">Enviar Consulta</button>
+    </form>
+
+    <!-- Nuevo div para mostrar la respuesta -->
+    <div id="result"></div>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        function submitQuery() {
+            const formData = new FormData(document.getElementById("queryForm"));
+            $.ajax({
+                type: "POST",
+                url: "/api/query",
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (data) {
+                    $("#result").html("<p>Respuesta: " + data.answer + "</p>");
+                },
+            });
+        }
+    </script>
+</body>
+</html>
+
