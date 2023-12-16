@@ -11,3 +11,4 @@ pasos proyecto
 2* (ya esta creada, falta ver configuración para conectarlo a python, el código ya esta creado en matias.ipynb)
 3- endpoint y template creados y funcionando en kino.py (mejorar esteticamente).
 4- conexión a BBDD local con sqlite3 (archivo bbdd_pruebas.bbdd) en matias.ipynb (fusionar con el codigo de kino.py).
+5- código fusionado que despliega flask y guarda los datos en la BBDD en matias.py 
