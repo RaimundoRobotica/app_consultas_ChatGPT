@@ -17,13 +17,16 @@ def index():
 @app.route('/api/query', methods=['POST'])
 def query():
     document = request.files['document'].read().decode('utf-8')
-    question = request.form['question']
-    context='contesta como si fueras Yoda'
+    # question = request.form['question']
+    question = f"{request.form['question']} contesta al estilo de Yoda."#.....simple simple simple
+
 
     # Llamada a Langchain
     
-    response = qa_document_chain.run(input_document=document, question=question, 
-                                     context = context)
+    response = qa_document_chain.run(input_document=document, question=question)
+
+    
+
     
     # transforma a yoda style
     # words = response.split().........ultimo cambio
