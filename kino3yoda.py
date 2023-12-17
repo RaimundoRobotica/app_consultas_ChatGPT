@@ -32,15 +32,17 @@ def query():
     
     response = qa_document_chain.run(input_document=document, question=question)
     
-    rate = 150
+    rate = 130
     lang = 'es'
+
     engine = pyttsx3.init()
     engine.setProperty('rate',rate)
-    engine.setProperty('voice', f'com.apple.speech.synthesis.voice.{lang}' if lang == 'es' else lang)
+    engine.setProperty('voice', f'com.apple.speech.synthesis.voice.samantha.premium{lang}') #if lang == 'es' else lang)
     engine.say(response)
     engine.runAndWait()
 
-    
+
+
 
     return jsonify({'answer': response})
 
