@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yoda knows everything</title>
+    <style>
+        body {
+            background-image: url('/static/img/yoda.webp');
+            background-size: cover;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        #container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        #content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #drop-zone {
+            border: 2px dashed #fff;
+            padding: 20px;
+            cursor: pointer;
+            margin-bottom: 20px;
+            background: rgba(0, 0, 0, 0.7); /* Fondo semi-transparente */
+            color: #fff;
+        }
+
+        #response {
+            font-size: 1.2em;
+        }
+
+        #btn-submit {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 1em;
+            border: none;
+            cursor: pointer;
+        }
+
+        #btn-submit:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    
+    <div id="container">
+        <div id="content">
+            <h1>Yoda knows everything about your files. Just ask him:</h1>
+            <form id="queryForm" method="post" enctype="multipart/form-data">
+                <label for="document">Upload Imperial or Rebel document:</label>
+                <p></p>
+                <input type="file" id="document" name="document" accept=".txt, .pdf, .py">
+                <br>
+                <p></p>
+                <label for="question">Question:</label>
+                <input type="text" id="question" name="question">
+                <br>
+                <p></p>
+                <button type="button" onclick="submitQuery()">Find out some Jedi wisdom</button>
+            </form>
+            <div id="result"></div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        function submitQuery() {
+            const formData = new FormData(document.getElementById("queryForm"));
+            $.ajax({
+                type: "POST",
+                url: "/api/query",
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (data) {
+                    $("#result").html("<p>Respuesta: " + data.answer + "</p>");
+                },
+            });
+        }
+    </script>
+</body>
+</html>
