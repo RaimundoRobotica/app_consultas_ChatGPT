@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yoda knows everything</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+        }
+
+        #background-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        #background-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        #container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        #content {
+            display: flex;
+            align-items: center;
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        #form-column,
+        #response-column {
+            flex: 1;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        #drop-zone {
+            border: 2px dashed #fff;
+            padding: 20px;
+            cursor: pointer;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        #response {
+            font-size: 1.2em;
+        }
+
+        #btn-submit {
+            background-color: #007BFF;
+            color: #fff;
+            padding: 10px 20px;
+            font-size: 1em;
+            border: none;
+            cursor: pointer;
+        }
+
+        #btn-submit:hover {
+            background-color: #0056b3;
+        }
+
+        #footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+        }
+
+        #yoda-silhouette {
+            width: 450px;
+            /* Ajusta el ancho según sea necesario */
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="background-container">
+        <img src="/static/img/biblioteca4.jpg" alt="Background Image">
+    </div>
+
+    <div id="container">
+        <div id="content">
+            <div id="form-column">
+                <h1>Biblioteca Galáctica de Coruscant:</h1>
+                <form id="queryForm" method="post" enctype="multipart/form-data">
+                    <label for="document">Primero, archivo .txt adjunta. Luego, preguntar debes.</label>
+                    <p></p>
+                    <input type="file" id="document" name="document" accept=".txt, .pdf, .py">
+                    <br>
+                    <p></p>
+                    <label for="question">Pregunta:</label>
+                    <input type="text" id="question" name="question">
+                    <br>
+                    <p></p>
+                    <button type="button" onclick="submitQuery()">May the force be with you</button>
+                </form>
+            </div>
+            <div id="response-column">
+                <div id="result"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Nuevo contenedor para la silueta de Yoda al pie de la página -->
+    <div id="footer">
+        <img id="yoda-silhouette" src="/static/img/Yoda_2.webp" alt="Yoda Silhouette">
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        function submitQuery() {
+            const formData = new FormData(document.getElementById("queryForm"));
+            $.ajax({
+                type: "POST",
+                url: "/api/query",
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (data) {
+                    $("#result").html("<p>" + data.answer + "</p>");
+                },
+            });
+        }
+    </script>
+</body>
+
+</html>
