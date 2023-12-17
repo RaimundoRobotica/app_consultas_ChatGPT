@@ -5,11 +5,15 @@ from langchain.chains.question_answering import load_qa_chain
 import pymysql
 
 app = Flask(__name__)
-app.config['DEBUG'] = True
+app.config["DEBUG"] = True
 
-llm = ChatOpenAI(model="gpt-3.5-turbo", openai_api_key="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")
+llm = ChatOpenAI(
+    model="gpt-3.5-turbo",
+    openai_api_key="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",
+)
 qa_chain = load_qa_chain(llm, chain_type="map_reduce")
 qa_document_chain = AnalyzeDocumentChain(combine_docs_chain=qa_chain)
+
 
 def guardar_en_base_de_datos(consulta, respuesta, archivo_nombre):
     # Información de conexión a la base de datos de AWS
@@ -26,7 +30,7 @@ def guardar_en_base_de_datos(consulta, respuesta, archivo_nombre):
         password=password,
         database=database,
         port=port,
-        cursorclass=pymysql.cursors.DictCursor
+        cursorclass=pymysql.cursors.DictCursor,
     )
 
     # Crear un cursor para ejecutar comandos SQL
@@ -34,7 +38,9 @@ def guardar_en_base_de_datos(consulta, respuesta, archivo_nombre):
 
     try:
         # Comando SQL para insertar datos en la tabla
-        insert_data_query = 'INSERT INTO consultas (consulta, respuesta, archivo) VALUES (%s, %s, %s)'
+        insert_data_query = (
+            "INSERT INTO consultas (consulta, respuesta, archivo) VALUES (%s, %s, %s)"
+        )
 
         # Ejecutar el comando SQL para insertar los datos
         cursor.execute(insert_data_query, (consulta, respuesta, archivo_nombre))
@@ -51,19 +57,23 @@ def guardar_en_base_de_datos(consulta, respuesta, archivo_nombre):
         cursor.close()
         connection.close()
 
-@app.route('/')
-def index():
-    return render_template('index2.html')
 
-@app.route('/api/query', methods=['POST'])
+@app.route("/")
+def index():
+    return render_template("index2.html")
+
+
+@app.route("/api/query", methods=["POST"])
 def query():
-    document = request.files['document']
-    question = request.form['question']
+    document = request.files["document"]
+    question = request.form["question"]
 
     # Almacenar el archivo subido por el usuario
     if document:
         archivo_nombre = document.filename
-        document_content = document.read().decode('utf-8')  # Leer el contenido del archivo
+        document_content = document.read().decode(
+            "utf-8"
+        )  # Leer el contenido del archivo
     else:
         archivo_nombre = None
         document_content = None
@@ -74,9 +84,10 @@ def query():
 
     # Almacenar en la base de datos
     guardar_en_base_de_datos(question, response, archivo_nombre)
-    print({'consulta': question, 'archivo': archivo_nombre, 'respuesta': response})
-    return jsonify({'answer': response})
+    print({"consulta": question, "archivo": archivo_nombre, "respuesta": response})
+    return jsonify({"answer": response})
     # return jsonify({'consulta': question, 'archivo': archivo_nombre, 'respuesta': response})
 
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000)
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=5000)
