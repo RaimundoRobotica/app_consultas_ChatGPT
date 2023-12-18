@@ -11,13 +11,14 @@ Cuatro intrépidos padawans, la generación de un sistema de comunicación revol
 
 ## Descripción y uso del proyecto en local
 
-Este proyecto en una aplicación web escrita en Python con Flask consiste. Hmmm... Al ejecutarse, la web a mí me muestra y al ciudadano introducir permite un archivo de texto y una consulta realizar. La aplicación muestra la respuesta generada por la fuerza presente en ChatGPT y, además, la consulta en Amazon AWS almacena.
+Este proyecto en una aplicación web escrita en Python con Flask consiste. Hmmm... Al ejecutarse, la web a mí me muestra. Al ciudadano introducir permite un archivo de texto y una consulta realizar. La aplicación muestra la respuesta generada por la fuerza presente en ChatGPT y, además, la consulta en Amazon AWS almacena.
 
 Recuerda utilizar solo archivos .txt. El lado oscuro está presente en el resto. Y nada bueno trajo el lado oscuro...
 
-Usar la aplicación en local fácil es. Basta con ejecutar el archivo ./app/app.py
+Usar la aplicación en local fácil es. Basta con ejecutar el archivo 
+<code>./app/app.py</code>
 
-En tu navegador esto escribe: localhost:5000
+En tu navegador esto escribe: <code>localhost:5000</code>
 
 Libre serás de consultarme. Pero... elige sabiamente tus preguntas. Las armas no ganan batallas. Tu mente poderosa ella es.
 
@@ -27,11 +28,12 @@ Libre serás de consultarme. Pero... elige sabiamente tus preguntas. Las armas n
 # Imagen de Docker
 
 Imposible nada es. Difícil, muchas cosas son... La imagen del proyecto en Docker en esta dirección se puede encontrar:
-- kinogalvez/grupo_4:v4
+<code>kinogalvez/grupo_4:v4</code>
 
 Para ejecutarlo, la siguiente instrucción bastaría:
-- docker run -p 5002:5000 kinogalvez/grupo_4:v4
-- 
+
+<code>docker run -p 5002:5000 kinogalvez/grupo_4:v4</code>
+
 Recuerda el puerto que quieras escribir.
 
 ## Contenido del repositorio
@@ -52,7 +54,7 @@ Los archivos los siguientes son:
 Contiene unos txt para hacer pruebas.
 
 ### Archivo notebooks
-Archivos intermedios usados para generar el proyecto. Grande la fuerza es en el archivo matias.ipynb. En el apartado *Consultar tabla* se puede comprobar el contenido actual de la base de datos AWS.
+Archivos intermedios usados para generar el proyecto. Grande la fuerza es en el archivo __matias.ipynb__. En el apartado *Consultar tabla* comprobar se puede el contenido actual de la base de datos AWS.
 
 
 # Autores
