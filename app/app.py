@@ -54,7 +54,7 @@ def guardar_en_base_de_datos(consulta, respuesta, archivo_nombre):
 
 @app.route('/')
 def index():
-    return render_template('index2.html')
+    return render_template('../templates/index3.html')
 
 @app.route('/api/query', methods=['POST'])
 def query():
