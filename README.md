@@ -5,7 +5,7 @@ La biblioteca galáctica de Coruscant la más importante de la República es. En
 
 Al Consejo Jedi, por tanto, se convocó.
 
-Cuatro intrépidos padawans, la generación de un sistema de comunicación revolucionario les fue encomendada. Hacedlo o no lo hagáis -dijimos- pero no lo intentéis.  Midi-chlorianos usarían, la pesada carga de los Jedi bibliotecarios se aligeraría. Idea simple pero efectiva era. Cualquier ciudadano de la República, información sobre un archivo consultar podría y una sabia pregunta hacer. A través de la Fuerza, yo mismo respondería a la consulta, sin necesidad de estar presente. Además, la propia Fuerza, sin crear gran conmoción, las consultas en la nube almacenaría.
+Cuatro intrépidos padawans, la generación de un sistema de comunicación revolucionario les fue encomendada. Hacedlo o no lo hagáis -dijimos- pero no lo intentéis.  Midiclorianos usarían, la pesada carga de los Jedi bibliotecarios se aligeraría. Idea simple pero efectiva era. Cualquier ciudadano de la República, información sobre un archivo consultar podría y una sabia pregunta hacer. A través de la Fuerza, yo mismo respondería a la consulta, sin necesidad de estar presente. Además, la propia Fuerza, sin crear gran conmoción, las consultas en la nube almacenaría.
 
 ![Biblioteca](./app/static/img/biblioteca.jpeg)
 
@@ -16,7 +16,7 @@ Este proyecto en una aplicación web escrita en Python con Flask consiste. Hmmm.
 Recuerda utilizar solo archivos .txt. El lado oscuro está presente en el resto. Y nada bueno trajo el lado oscuro...
 
 Usar la aplicación en local fácil es. Basta con ejecutar el archivo 
-<code>./app/app.py</code>
+<code>app/app.py</code>
 
 En tu navegador esto escribe: <code>localhost:5000</code>
 
@@ -41,8 +41,8 @@ El repositorio tres carpetas contiene: app, demo y notebooks, aparte de este arc
 
 ### Archivo app
 
-Este archivo el archivo static/img contiene. Imágenes almacena.
-En el archivo templates, el poderoso html que hace de intermediario entre la fuerza está.
+Aquí el archivo static/img está. Imágenes almacena.
+En el archivo templates, el poderoso html que controla la fuerza está.
  
 Los archivos los siguientes son:
 - __app.py__: Archivo más poderoso de todos. Genera la clase Flask y la función llm que canaliza la fuerza para permitir la comunicación. La función *guardar_en_base_de_datos* guarda la consulta en una base de datos AWS. La función *index* genera la web principal, la función *query* recoge los datos del usuario, consulta a chatGPT y aplica la función *guardar_en_base_de_datos*.
