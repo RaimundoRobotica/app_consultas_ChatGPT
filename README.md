@@ -7,8 +7,6 @@ Al Consejo Jedi, por tanto, se convocó.
 
 Cuatro intrépidos padawans, la generación de un sistema de comunicación revolucionario les fue encomendada. Hacedlo o no lo hagáis -dijimos- pero no lo intentéis.  Midi-chlorianos usarían, la pesada carga de los Jedi bibliotecarios se aligeraría. Idea simple pero efectiva era. Cualquier ciudadano de la República, información sobre un archivo consultar podría y una sabia pregunta hacer. A través de la Fuerza, yo mismo respondería a la consulta, sin necesidad de estar presente. Además, la propia Fuerza, sin crear gran conmoción, las consultas en la nube almacenaría.
 
-Hacedlo o no lo hagáis, les dije. Pero no lo intentéis.
-
 ![Biblioteca](./app/static/img/biblioteca.jpeg)
 
 ## Descripción y uso del proyecto en local
