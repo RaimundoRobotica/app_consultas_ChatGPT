@@ -3,7 +3,7 @@ from langchain.chains import AnalyzeDocumentChain
 from langchain.chat_models import ChatOpenAI
 from langchain.chains.question_answering import load_qa_chain
 import pymysql
-import pyttsx3
+# import pyttsx3
 
 app = Flask(__name__)
 app.config['DEBUG'] = True
@@ -20,7 +20,7 @@ def guardar_en_base_de_datos(consulta, respuesta, archivo_nombre):
     port = 3306
     database = "database-2"  # Reemplaza con el nombre de tu base de datos
 
-    # Conectar a la base de datos
+    # Conectar a la base de datosdoc
     connection = pymysql.connect(
         host=host,
         user=username,
@@ -54,7 +54,7 @@ def guardar_en_base_de_datos(consulta, respuesta, archivo_nombre):
 
 @app.route('/')
 def index():
-    return render_template('../templates/index3.html')
+    return render_template('index3.html')
 
 @app.route('/api/query', methods=['POST'])
 def query():
@@ -73,14 +73,14 @@ def query():
     response = qa_document_chain.run(input_document=document_content, question=question)
     # print(response)
 
-    rate = 130
-    lang = 'es'
+    # rate = 130
+    # lang = 'es'
 
-    engine = pyttsx3.init()
-    engine.setProperty('rate',rate)
-    engine.setProperty('voice', f'com.apple.speech.synthesis.voice.samantha.premium{lang}') #if lang == 'es' else lang)
-    engine.say(response)
-    engine.runAndWait()
+    # engine = pyttsx3.init()
+    # engine.setProperty('rate',rate)
+    # engine.setProperty('voice', f'com.apple.speech.synthesis.voice.samantha.premium{lang}') #if lang == 'es' else lang)
+    # engine.say(response)
+    # engine.runAndWait()
 
     # Almacenar en la base de datos
     guardar_en_base_de_datos(question, response, archivo_nombre)

@@ -12,3 +12,4 @@ langchain==0.0.107
 pymysql==1.1.0
 openai==0.27.0
 transformers==4.10.2
+

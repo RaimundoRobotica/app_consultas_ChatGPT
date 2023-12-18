@@ -13,7 +13,7 @@ class TestApp(TestCase):
         self.assert200(response)
 
     def test_query_route(self):
-        with open('demo/test_document.txt', 'rb') as test_document:
+        with open('../demo/test_document.txt', 'rb') as test_document:
             response = self.client.post('/api/query', data=dict(
                 document=(test_document, 'test_document.txt'),
                 question='What is the answer?'
