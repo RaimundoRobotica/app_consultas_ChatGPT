@@ -5,18 +5,23 @@ from langchain.chains.question_answering import load_qa_chain
 import pymysql
 # import pyttsx3
 
+API_openAI = ''
+username_AWS = ""
+password_AWS = ""
+host_AWS = ""
+
 app = Flask(__name__)
 app.config['DEBUG'] = True
 
-llm = ChatOpenAI(model="gpt-3.5-turbo", openai_api_key="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")
+llm = ChatOpenAI(model="gpt-3.5-turbo", openai_api_key=API_openAI)
 qa_chain = load_qa_chain(llm, chain_type="map_reduce")
 qa_document_chain = AnalyzeDocumentChain(combine_docs_chain=qa_chain)
 
 def guardar_en_base_de_datos(consulta, respuesta, archivo_nombre):
     # Información de conexión a la base de datos de AWS
-    username = "admin"
-    password = "elgrupo4"
-    host = "database-2.cuwmrnsvir86.eu-north-1.rds.amazonaws.com"
+    username = username_AWS
+    password = password_AWS
+    host = host_AWS
     port = 3306
     database = "database-2"  # Reemplaza con el nombre de tu base de datos
 
