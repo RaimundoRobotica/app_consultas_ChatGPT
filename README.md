@@ -56,6 +56,8 @@ Contiene unos txt para hacer pruebas.
 ### Archivo notebooks
 Archivos intermedios usados para generar el proyecto. Grande la fuerza es en el archivo __matias.ipynb__. En el apartado *Consultar tabla* comprobar se puede el contenido actual de la base de datos AWS.
 
+# Tecnologías
+Este proyecto tecnología chatarra como el Halcón Milenario no utiliza. La versión de Python 3.8 ejecuta. Flask 2.2 contra los Sith combate para la aplicación generar. Langchain el elegido es para con GPT comunicarse. Pymysql en la nube almacena. Docker contenedores genera. Para más información encontrar, el archivo requirements.txt puedes consultar.
 
 # Autores
 
